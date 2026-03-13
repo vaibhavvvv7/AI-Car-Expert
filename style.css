@@ -1,0 +1,220 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: #0f172a; /* Fallback for when video doesn't load/play */
+}
+
+#bg-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+    object-fit: cover;
+    filter: brightness(0.4);
+    transition: filter 0.5s ease;
+    animation: videoFadeIn 2s ease-in-out;
+}
+
+@keyframes videoFadeIn {
+    from { opacity: 0; transform: scale(1.05); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.glass-container {
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 3rem;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    animation: fadeIn 1s ease-out;
+    overflow-y: auto;
+}
+
+/* Custom Scrollbar */
+.glass-container::-webkit-scrollbar {
+    width: 8px;
+}
+.glass-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+.glass-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+.glass-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+header {
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #60a5fa, #fce784); /* Blue to Yellow gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1.1rem;
+    color: #cbd5e1;
+    font-weight: 300;
+}
+
+.input-group {
+    display: flex;
+    gap: 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 1.2rem 1.5rem;
+    font-size: 1.1rem;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+    font-family: 'Outfit', sans-serif;
+}
+
+input[type="text"]::placeholder {
+    color: #94a3b8;
+}
+
+input[type="text"]:focus {
+    border-color: #fce784; /* Yellow focus border */
+    box-shadow: 0 0 0 4px rgba(252, 231, 132, 0.2); /* Yellow focus shadow */
+    background: rgba(0, 0, 0, 0.5);
+}
+
+button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #3b82f6, #eab308); /* Blue to Darker Yellow gradient */
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Outfit', sans-serif;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -10px rgba(234, 179, 8, 0.5); /* Yellow hover shadow */
+    background: linear-gradient(135deg, #2563eb, #ca8a04); /* Darker Blue to Darkest Yellow on hover */
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.response-box {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(252, 231, 132, 0.2);
+    border-radius: 16px;
+    padding: 2.5rem;
+    color: #e2e8f0;
+    line-height: 1.7;
+    font-size: 1.1rem;
+    animation: slideUp 0.5s ease-out;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.response-box:empty {
+    display: none;
+}
+
+.response-box h1, .response-box h2, .response-box h3 {
+    color: #fff;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+/* Specific styling for Car Names (usually H3 in this prompt) */
+.response-box h3 {
+    font-size: 1.6rem;
+    color: #fce784; /* Yellow to stand out */
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid rgba(252, 231, 132, 0.3);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.response-box p {
+    margin-bottom: 1.2rem;
+}
+
+.response-box ul {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.response-box li {
+    margin-bottom: 0.5rem;
+}
+
+.response-box strong {
+    color: #93c5fd; /* Soft blue for emphasis */
+    font-weight: 600;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+    .glass-container {
+        padding: 2rem 1.5rem;
+    }
+    .input-group {
+        flex-direction: column;
+    }
+    button {
+        padding: 1.2rem;
+        justify-content: center;
+    }
+}
